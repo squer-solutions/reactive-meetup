@@ -1,6 +1,6 @@
-package io.squer.reactive_poc.config;
+package io.squer.reactive.config;
 
-import io.squer.reactive_poc.model.LogEntry;
+import io.squer.reactive.model.LogEntry;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

@@ -18,7 +18,7 @@ type LogEntry = {
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'reactive-poc-angular';
+  title = 'reactive-angular';
 
   logs: Observable<LogEntry[]>
 

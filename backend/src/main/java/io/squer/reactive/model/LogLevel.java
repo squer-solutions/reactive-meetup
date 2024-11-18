@@ -1,4 +1,4 @@
-package io.squer.reactive_poc.model;
+package io.squer.reactive.model;
 
 public enum LogLevel {
 

@@ -1,7 +1,7 @@
-package io.squer.reactive_poc.service;
+package io.squer.reactive.service;
 
-import io.squer.reactive_poc.model.LogEntry;
-import io.squer.reactive_poc.model.LogLevel;
+import io.squer.reactive.model.LogEntry;
+import io.squer.reactive.model.LogLevel;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

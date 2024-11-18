@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.squer</groupId>
-	<artifactId>reactive-poc</artifactId>
+	<artifactId>reactive-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>reactive-poc</name>
 	<description>Demo project for Reactive POC</description>

@@ -1,7 +1,7 @@
-package io.squer.reactive_poc.ports;
+package io.squer.reactive.ports;
 
-import io.squer.reactive_poc.model.LogEntry;
-import io.squer.reactive_poc.service.LogService;
+import io.squer.reactive.model.LogEntry;
+import io.squer.reactive.service.LogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

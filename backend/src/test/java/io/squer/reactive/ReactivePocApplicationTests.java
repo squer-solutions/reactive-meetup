@@ -1,4 +1,4 @@
-package io.squer.reactive_poc;
+package io.squer.reactive;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

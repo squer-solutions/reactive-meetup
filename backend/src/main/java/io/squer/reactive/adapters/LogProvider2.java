@@ -1,7 +1,7 @@
-package io.squer.reactive_poc.adapters;
+package io.squer.reactive.adapters;
 
-import io.squer.reactive_poc.model.LogEntry;
-import io.squer.reactive_poc.service.LogProvider;
+import io.squer.reactive.model.LogEntry;
+import io.squer.reactive.service.LogProvider;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
