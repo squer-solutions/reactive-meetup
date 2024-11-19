@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.time.OffsetDateTime;
 
 @Component
-public class LogProvider1 implements LogProvider {
+public class InMemoryLogProvider implements LogProvider {
 
     @Override
     public Flux<LogEntry> getLogs() {
