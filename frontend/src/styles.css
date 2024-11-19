@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Museo Sans';
+  font-style: normal;
+  font-weight: 100;
+  src: local('MuseoSans 100'), url('../public/MuseoSans 100.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('MuseoSans 300'), url('../public/MuseoSans 300.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'Museo Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('MuseoSans 700'), url('../public/MuseoSans 700.otf') format('opentype');
+}
+
+html, body { height: 100%; }
+body { margin: 0;}
+
+* {
+  font-family: "Museo Sans", "Roboto", sans-serif;
+}

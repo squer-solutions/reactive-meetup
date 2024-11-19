@@ -1,12 +1,10 @@
 package io.squer.reactive.ports;
 
+import io.squer.reactive.model.FilterParams;
 import io.squer.reactive.model.LogEntry;
 import io.squer.reactive.service.LogService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
 @RestController
@@ -18,8 +16,10 @@ public class LogController {
 
     @CrossOrigin("*")
     @GetMapping()
-    public Flux<LogEntry> getLogs() {
-        return logService.getLogs();
+    public Flux<LogEntry> getLogs(@RequestParam(required = false) String status, @RequestParam(required = false) String message) {
+        return logService.getLogs(
+                new FilterParams(status, message)
+        );
     }
 
 }

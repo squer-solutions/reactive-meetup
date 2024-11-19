@@ -1,0 +1,28 @@
+.log-table {
+  display: block;
+  max-height: 25rem;
+  overflow-y: scroll;
+  border-collapse: collapse;
+  width: -webkit-fill-available;
+  margin: 5rem;
+
+  th {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: left;
+    background-color: #1fade9;
+    color: white;
+  }
+
+  tr {
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  td, th {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    width: max-content;
+  }
+}
