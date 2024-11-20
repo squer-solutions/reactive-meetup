@@ -10,12 +10,13 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     text-align: left;
-    background-color: #f3f3f3;
+    background-color: var(--mat-toolbar-container-background-color);
+    font-weight: 300;
   }
 
   tr {
     &:hover {
-      background-color: #f3f3f3;
+      background-color: var(--mat-toolbar-container-background-color);
     }
   }
 
