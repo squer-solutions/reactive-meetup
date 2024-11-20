@@ -47,4 +47,5 @@ export class LogSearchComponent implements OnInit {
   clear() {
     this.searchForm.reset({})
   }
+
 }

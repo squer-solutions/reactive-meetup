@@ -15,14 +15,16 @@
     </mat-form-field>
   </div>
   <div class="form-actions-row">
-    <button mat-raised-button color="success" (click)="search()">
+    <button mat-stroked-button color="secondary" (click)="search()">
       <mat-icon>play_circle</mat-icon>
       Stream Logs
     </button>
-    <button mat-raised-button color="warn" (click)="stop()">
+    <button mat-stroked-button color="warn" (click)="stop()">
       <mat-icon>stop_circle</mat-icon>
       Stop Streaming
     </button>
-    <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+    <button mat-stroked-button color="secondary" (click)="clear()">
+      Clear
+    </button>
   </div>
 </form>
