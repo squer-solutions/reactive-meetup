@@ -1,6 +1,5 @@
 package io.squer.reactive.service;
 
-import io.squer.reactive.model.FilterParams;
 import io.squer.reactive.model.LogEntry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,26 +13,20 @@ public class LogService {
 
     private final List<LogProvider> logProviders;
 
-    public Flux<LogEntry> getLogs(FilterParams filterParams) {
+    public Flux<LogEntry> getLogs(String filter) {
         return Flux.merge(
             logProviders.stream()
-                .map(provider -> provider.getLogs()
-                        .filter(log -> {
-                            final var statusCheck = checkStatusFilter(filterParams.status(), log);
-                            final var messageCheck = checkMessageFilter(filterParams.message(), log);
-                            return statusCheck && messageCheck;
-                        })
-                )
+                .map(LogProvider::getLogs)
+                .toList()
+        ).filter(logEntry -> logEntry.message().contains(filter));
+    }
+
+    public Flux<LogEntry> getLogs() {
+        return Flux.merge(
+            logProviders.stream()
+                .map(LogProvider::getLogs)
                 .toList()
         );
-    }
-
-    private boolean checkStatusFilter(String status, LogEntry log) {
-        return status == null || status.equals(log.level().name());
-    }
-
-    private boolean checkMessageFilter(String message, LogEntry log) {
-        return message == null || log.message().toLowerCase().contains(message.toLowerCase());
     }
 
 }
