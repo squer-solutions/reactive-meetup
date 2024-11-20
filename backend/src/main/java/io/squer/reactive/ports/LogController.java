@@ -16,10 +16,8 @@ public class LogController {
 
     @CrossOrigin("*")
     @GetMapping()
-    public Flux<LogEntry> getLogs(@RequestParam(required = false) String status, @RequestParam(required = false) String message) {
-        return logService.getLogs(
-                new FilterParams(status, message)
-        );
+    public Flux<LogEntry> getLogs(@RequestParam(required = false) String message) {
+        return logService.getLogs(message);
     }
 
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -20,32 +20,23 @@ import {debounceTime} from 'rxjs';
   styleUrl: './log-search.component.css'
 })
 export class LogSearchComponent implements OnInit {
-  searchForm!: FormGroup;
+  searchControl = new FormControl<string>('');
 
-  constructor(private readonly formBuilder: FormBuilder, private readonly eventService: AppEventManagerService) {
+  constructor(private readonly eventService: AppEventManagerService) {
   }
 
   ngOnInit() {
-    this.searchForm = this.formBuilder.group({
-      status: (''),
-      message: ''
-    });
-
-    this.searchForm.valueChanges
+    this.searchControl.valueChanges
       .pipe(debounceTime(500))
-      .subscribe(val => this.eventService.streamLogs$.next(val))
+      .subscribe(val => this.eventService.streamLogs$.next(val as string))
   }
 
   search() {
-    this.eventService.streamLogs$.next(this.searchForm.value);
+    this.eventService.streamLogs$.next(this.searchControl.value as string);
   }
 
   stop() {
     this.eventService.stopStream$.next();
-  }
-
-  clear() {
-    this.searchForm.reset({})
   }
 
 }

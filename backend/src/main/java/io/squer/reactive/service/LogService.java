@@ -13,12 +13,12 @@ public class LogService {
 
     private final List<LogProvider> logProviders;
 
-    public Flux<LogEntry> getLogs(String filter) {
+    public Flux<LogEntry> getLogs(String filterText) {
         return Flux.merge(
             logProviders.stream()
                 .map(LogProvider::getLogs)
                 .toList()
-        ).filter(logEntry -> logEntry.message().contains(filter));
+        ).filter(logEntry -> filterText == null || logEntry.message().toLowerCase().contains(filterText.toLowerCase()));
     }
 
     public Flux<LogEntry> getLogs() {
