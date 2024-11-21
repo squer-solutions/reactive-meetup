@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, scan} from 'rxjs';
 import {LogEntry} from '../model/log-entry.model';
 import {ServerSentEventsRxjsService} from './server-sent-events-rxjs.service';
 
@@ -13,9 +13,9 @@ export class LogClientService {
   constructor(private readonly sseRxjsService: ServerSentEventsRxjsService) {
   }
 
-  streamLogs(searchText: string): Observable<LogEntry> {
+  streamLogs(searchText: string): Observable<LogEntry[]> {
     const url = this.addSearchParams(this.LOG_BACKEND_SERVICE_URL, searchText);
-    return this.sseRxjsService.getServerSentEvents<LogEntry>(url);
+    return this.sseRxjsService.getServerSentEvents<LogEntry>(url).pipe(scan((acc, curr) => [curr, ...acc], [] as LogEntry[]));
   }
 
   private addSearchParams(url: string, searchText: string): string {

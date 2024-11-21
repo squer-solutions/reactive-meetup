@@ -1,12 +1,2 @@
-<main class="main">
-  <div>
-    <table>
-      <tr *ngFor="let log of (logs | async)">
-        <td>{{log.level}}</td>
-        <td>{{log.timestamp | date:'dd.MM.yyyy hh:mm:ss:SSS'}}</td>
-        <td>{{log.message}}</td>
-      </tr>
-    </table>
-  </div>
-
-</main>
+<app-log-search/>
+<app-log-table/>

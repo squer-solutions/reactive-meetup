@@ -15,6 +15,6 @@ public class InMemoryLogProvider implements LogProvider {
     @Override
     public Flux<LogEntry> getLogs() {
         return Flux.interval(Duration.ofSeconds(1))
-            .map(i -> new LogEntry(LogLevel.DEBUG, OffsetDateTime.now(), "Test"));
+            .map(i -> new LogEntry(LogLevel.DEBUG, OffsetDateTime.now(), "Debug from in-memory log provider: " + i));
     }
 }

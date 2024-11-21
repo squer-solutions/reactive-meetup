@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {debounceTime, distinctUntilChanged, map, Observable, of, switchMap} from 'rxjs';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
-  selector: 'reactive-update',
+  selector: 'reactive-api-call',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -13,15 +13,15 @@ import { AsyncPipe } from '@angular/common';
   template: `
     <form>
       <input [formControl]="formControl" id="input"/>
-      {{ title$ | async }}
+      {{ response$ | async }}
     </form>
   `
 })
-export class ReactiveUpdate {
+export class ReactiveApiCall {
 
   public formControl = new FormControl<string>('', {nonNullable: true});
 
-  response$: Observable<object>;
+  response$: Observable<string>;
 
   constructor() {
     this.response$ = this.formControl.valueChanges.pipe(
@@ -29,12 +29,12 @@ export class ReactiveUpdate {
       map(value => value.toUpperCase()),
       debounceTime(600),
       distinctUntilChanged(),
-      switchMap(this.callApi)
+      switchMap((val) => this.callApi(val))
     );
   }
 
-  callApi(value: string): Observable<object> {
-    return of({})
+  callApi(value: string): Observable<string> {
+    return of("Response from API")
   }
 
 }

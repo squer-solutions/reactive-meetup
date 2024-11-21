@@ -20,7 +20,7 @@ import {debounceTime} from 'rxjs';
   styleUrl: './log-search.component.css'
 })
 export class LogSearchComponent implements OnInit {
-  searchControl = new FormControl<string>('');
+  searchControl = new FormControl<string>('', {nonNullable: true});
 
   constructor(private readonly eventService: AppEventManagerService) {
   }
@@ -28,11 +28,11 @@ export class LogSearchComponent implements OnInit {
   ngOnInit() {
     this.searchControl.valueChanges
       .pipe(debounceTime(500))
-      .subscribe(val => this.eventService.streamLogs$.next(val as string))
+      .subscribe(val => this.eventService.streamLogs$.next(val))
   }
 
   search() {
-    this.eventService.streamLogs$.next(this.searchControl.value as string);
+    this.eventService.streamLogs$.next(this.searchControl.value);
   }
 
   stop() {
