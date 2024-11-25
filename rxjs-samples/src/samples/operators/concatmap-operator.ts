@@ -1,4 +1,5 @@
 import { concatMap, interval, map, take } from "rxjs";
+import { logger } from "../../logger/pretty-logger";
 
 export function testConcatMap() {
     const names = ["alice", "bob", "gerald", "hans", "michael"];
@@ -6,8 +7,8 @@ export function testConcatMap() {
 
     namesStream$.pipe(
         concatMap(name => {
-            console.log("starting inner stream for " + name);
+            logger.log(`starting inner stream for ${name}`, 'yellow');
             return interval(1000).pipe(take(5), map(val => name + val))
         })
-    ).subscribe(res => console.log(res));
+    ).subscribe(res => logger.log(res, 'blue'));
 }

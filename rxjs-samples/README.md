@@ -8,7 +8,6 @@ npm ci
 npm run start:dev
 ```
 
-The development server will be available at [http://localhost:4200](http://localhost:4200).
 The application will automatically reload if you change any of the source files.
 
 You can find the source code of the application in the [src](src) directory.

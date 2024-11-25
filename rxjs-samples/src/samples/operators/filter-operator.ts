@@ -4,11 +4,11 @@ import moment from 'moment';
 class User {
   name: string;
   lastLoginDate: moment.Moment;
-  hasActiveSubscription: boolean;
+  hasPremium: boolean;
   constructor(name: string, lastLoginDate: moment.Moment, isActive: boolean) {
     this.name = name;
     this.lastLoginDate = lastLoginDate;
-    this.hasActiveSubscription = isActive;
+    this.hasPremium = isActive;
   }
 }
 
@@ -21,8 +21,7 @@ export function testFilterOperator() {
 
   users$
     .pipe(
-        //todo: change subscription to premium
-      filter(user => user.hasActiveSubscription && user.lastLoginDate.isAfter(moment().subtract(6, 'months')))
+      filter(user => user.hasPremium && user.lastLoginDate.isAfter(moment().subtract(6, 'months')))
     )
     .subscribe(res => console.log(res));
 }
