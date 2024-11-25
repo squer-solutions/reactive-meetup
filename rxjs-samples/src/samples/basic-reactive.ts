@@ -7,7 +7,4 @@ export function basicReactive() {
   number$.subscribe(num => {
     logger.log(num * num);
   });
-
-  number$.next(5);
-  number$.next(8);
 }

@@ -1,4 +1,5 @@
 import { debounceTime, delay, from} from "rxjs";
+import {logger} from "../../logger/pretty-logger";
 
 export function testDebounce() {
     const userInput = ["h","he","hel", "hell", "hello"];
@@ -7,6 +8,6 @@ export function testDebounce() {
     userInput$.pipe(
         debounceTime(500)
     ).subscribe(val => {
-        console.log(val)
+        logger.log(val, "green");
     })
 }

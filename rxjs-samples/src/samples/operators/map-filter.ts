@@ -22,9 +22,11 @@ const sensors: SensorData[] = [
 
 const aqiSensorData$ = interval(1000).pipe(take(10), map(idx => sensors[idx]));
 
+const RISKY_AQI_THRESHOLD = 50;
+
 export function testMapAndFilter() {
     aqiSensorData$.pipe(
-        filter(data => data.airQualityIndex >= 50),
+        filter(data => data.airQualityIndex >= RISKY_AQI_THRESHOLD),
         map(data => `ALERT: Sensor at area [${data.area}] reporting high Air Quality Index: ${data.airQualityIndex}`)
       ).subscribe(alert => {
           // send to alerting system
