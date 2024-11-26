@@ -28,7 +28,7 @@ export function testMapAndFilter() {
         map(data => `ALERT: Sensor at area [${data.area}] reporting high Air Quality Index: ${data.airQualityIndex}`)
       ).subscribe(alert => {
           // send to alerting system
-        logger.log(alert); 
+        logger.log(alert, "red");
       });
 }
 

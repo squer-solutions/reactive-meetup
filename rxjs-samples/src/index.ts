@@ -17,9 +17,13 @@ import {testCombineLatestProblem} from "./samples/operators/combinelatest-operat
 import {testCombineLatest} from "./samples/operators/combinelatest-operator";
 import {testZip} from "./samples/operators/zip-operator";
 import {testZipProblem} from "./samples/operators/zip-operator.problem";
+import {testMapAndFilterProblem} from "./samples/operators/map-filter.problem";
 
 // basicReactive();
+
+// testMapAndFilterProblem();
 // testMapAndFilter();
+
 // testUnicast();
 // testMulticast();
 // testDebounce();

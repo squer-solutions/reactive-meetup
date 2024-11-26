@@ -22,7 +22,7 @@ const aqiSensorData$ = interval(1000).pipe(
 
 const RISKY_AQI_THRESHOLD = 50;
 
-export function testMapAndFilter() {
+export function testMapAndFilterProblem() {
     const filteredData$ = new Subject<SensorData>();
 
     aqiSensorData$.subscribe(data => {
@@ -38,7 +38,7 @@ export function testMapAndFilter() {
     });
 
     alert$.subscribe(alert => {
-        logger.log(alert);
+        logger.log(alert, "red");
     });
 }
 
