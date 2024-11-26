@@ -1,10 +1,15 @@
-import { BehaviorSubject } from 'rxjs';
-import { logger } from '../logger/pretty-logger';
+import { map, Subject} from 'rxjs';
 
 export function basicReactive() {
-  const number$ = new BehaviorSubject(2);
+  const number$ = new Subject<number>();
 
-  number$.subscribe(num => {
-    logger.log(num * num);
-  });
+  number$.pipe(
+      map(num => num * num)
+  ).subscribe(
+      result => console.log(result)
+  );
+
+  number$.next(2);
+  number$.next(4);
+  number$.next(5);
 }
