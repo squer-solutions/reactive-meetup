@@ -1,7 +1,7 @@
 import {interval, map, of, take, zip} from "rxjs";
 
 export function testZip() {
-    const namesList = ['Bobby', 'Leslie', 'Ben', 'April', 'Andy', 'Tom', 'Donna', 'Jerry', 'Chris', 'Ann'];
+    const namesList = ['Bobby', 'Leslie', 'Ben', 'April'];
 
     // Simulate the source observables
     let age$ = interval(1000).pipe(
