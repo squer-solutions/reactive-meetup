@@ -11,6 +11,12 @@ import { testBehaviorSubject } from "./samples/subjects/behavior-subject";
 import { testReplaySubject } from "./samples/subjects/replay-subject";
 import { testSubject } from "./samples/subjects/subject";
 import { testUnicast } from "./samples/unicast";
+import {testConcatProblem} from "./samples/operators/concat-operator.problem";
+import {testConcat} from "./samples/operators/concat-operator";
+import {testCombineLatestProblem} from "./samples/operators/combinelatest-operator.problem";
+import {testCombineLatest} from "./samples/operators/combinelatest-operator";
+// import {testZip} from "./samples/operators/zip-operator";
+import {testZipProblem} from "./samples/operators/zip-operator.problem";
 
 // basicReactive();
 // testMapAndFilter();
@@ -24,3 +30,12 @@ import { testUnicast } from "./samples/unicast";
 // testSubject();
 // testBehaviorSubject();
 // testReplaySubject();
+
+// testConcatProblem();
+// testConcat();
+
+// testCombineLatestProblem();
+// testCombineLatest()
+
+// testZip();
+// testZipProblem();
