@@ -21,7 +21,11 @@ export function testZip() {
 
     zip(age$, name$, hasPremium$)
         .pipe(
-            map(([age, name, hasPremium]) => ({age, name, hasPremium}))
+            map(([age, name, hasPremium]) => {
+                return {age, name, hasPremium};
+            })
         )
-        .subscribe(result => console.log(result));
+        .subscribe(
+            result => console.log(result)
+        );
 }

@@ -19,8 +19,19 @@ public class LogProducer {
 
     public LogProducer(KafkaSender<String, LogEntry> kafkaSender) {
         var outbound = Flux.interval(Duration.ofSeconds(1))
-            .map(__ -> new LogEntry(LogLevel.DEBUG, OffsetDateTime.now(), "Test from reactive Kafka"))
-            .map(logEntry -> SenderRecord.create(TOPIC, 0, logEntry.timestamp().toEpochSecond(), logEntry.timestamp().toString(), logEntry, logEntry.timestamp()));
+            .map(__ -> new LogEntry(
+                    LogLevel.DEBUG,
+                    OffsetDateTime.now(),
+                    "Test from reactive Kafka")
+            )
+            .map(logEntry -> SenderRecord.create(
+                    TOPIC,
+                    0,
+                    logEntry.timestamp().toEpochSecond(),
+                    logEntry.timestamp().toString(),
+                    logEntry, logEntry.timestamp()
+            ));
+        
         kafkaSender.send(outbound)
             .doOnError(e -> log.error("Send failed", e))
             .doOnNext(r -> log.info("Message sent: " + r.recordMetadata()))

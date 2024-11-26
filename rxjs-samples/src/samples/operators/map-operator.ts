@@ -17,7 +17,9 @@ export function testMapOperator() {
 
   users$
     .pipe(
-      map(user => new User(user.name.trim(), user.email.trim().toLowerCase()))
-    )
+      map(user => new User(
+          user.name.trim(),
+          user.email.trim().toLowerCase()
+      )))
     .subscribe(res => console.log(res));
 }

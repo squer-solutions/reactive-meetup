@@ -15,7 +15,7 @@ import {testConcatProblem} from "./samples/operators/concat-operator.problem";
 import {testConcat} from "./samples/operators/concat-operator";
 import {testCombineLatestProblem} from "./samples/operators/combinelatest-operator.problem";
 import {testCombineLatest} from "./samples/operators/combinelatest-operator";
-// import {testZip} from "./samples/operators/zip-operator";
+import {testZip} from "./samples/operators/zip-operator";
 import {testZipProblem} from "./samples/operators/zip-operator.problem";
 
 // basicReactive();

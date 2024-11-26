@@ -20,7 +20,10 @@ const sensors: SensorData[] = [
     { area: "Floridsdorf", airQualityIndex: 80 }
 ];
 
-const aqiSensorData$ = interval(1000).pipe(take(sensors.length), map(idx => sensors[idx]));
+const aqiSensorData$ = interval(1000).pipe(
+    take(sensors.length),
+    map(idx => sensors[idx])
+);
 
 const RISKY_AQI_THRESHOLD = 50;
 
