@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class LogClientService {
 
   getLogStream(searchText: string): Observable<LogEntry[]> {
     console.log(`called getLogStream with ${searchText}`);
-    return of([]);
+    return of([]).pipe(delay(1500));
   }
 
   private addSearchParams(url: string, searchText: string): string {

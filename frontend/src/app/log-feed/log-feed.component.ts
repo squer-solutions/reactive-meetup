@@ -3,7 +3,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
 import { LogClientService } from '../service/log-client.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
@@ -25,6 +25,7 @@ import { MatInput } from '@angular/material/input';
 export class LogFeedComponent implements OnInit {
 
   logs$!: Observable<LogEntry[]>;
+  formControl: FormControl<string> = new FormControl('', {nonNullable: true});
 
   constructor(private readonly logService: LogClientService) {
   }
