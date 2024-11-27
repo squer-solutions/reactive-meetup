@@ -7,6 +7,7 @@ export function testUnicast() {
   unicast.subscribe(value => logger.log(value * 10, 'yellow'));
 
   setTimeout(() => {
+    logger.log('Subscribing again...', 'blue');
     unicast.subscribe(value => logger.log(value * 100, 'blue'));
   }, 4000);
 }

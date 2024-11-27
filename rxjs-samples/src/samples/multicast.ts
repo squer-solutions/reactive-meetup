@@ -8,6 +8,7 @@ export function testMulticast() {
   multicast.subscribe(value => logger.log(value * 10, 'yellow'));
 
   setTimeout(() => {
+    logger.log('Subscribing again...', 'blue');
     multicast.subscribe(value => logger.log(value * 100, 'blue'));
   }, 4000);
 }
