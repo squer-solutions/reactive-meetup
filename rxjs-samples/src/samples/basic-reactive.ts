@@ -1,6 +1,6 @@
 import { map, Subject} from 'rxjs';
 
-export function basicReactive() {
+export function testBasicReactive() {
   const number$ = new Subject<number>();
 
   number$.pipe(
@@ -8,8 +8,4 @@ export function basicReactive() {
   ).subscribe(
       result => console.log(result)
   );
-
-  number$.next(2);
-  number$.next(4);
-  number$.next(5);
 }

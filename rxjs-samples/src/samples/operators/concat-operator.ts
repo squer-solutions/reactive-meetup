@@ -14,5 +14,5 @@ export function testConcat() {
 }
 
 function performTask(taskNumber: number) {
-    return of(`Task ${taskNumber} executed`).pipe(delay(1000));
+    return of(`Task ${taskNumber} executed`).pipe(delay(2000));
 }

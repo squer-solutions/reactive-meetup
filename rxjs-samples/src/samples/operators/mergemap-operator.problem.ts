@@ -13,7 +13,7 @@ export function testMergeMapProblem() {
     namesStream$.subscribe(name => {
         logger.log(`starting inner stream for ${name}`, 'yellow');
         interval(1000).pipe(
-            take(names.length),
+            take(5),
             map(val => name + val)
         ).subscribe(res => a.next(res));
     })

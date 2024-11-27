@@ -12,7 +12,7 @@ export function testMergeMap() {
         mergeMap(name => {
             logger.log(`starting inner stream for ${name}`, 'yellow');
             return interval(1000).pipe(
-                take(names.length),
+                take(5),
                 map(val => name + val)
             )
         })
