@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable, scan } from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
-import { ServerSentEventsRxjsService } from './server-sent-events-rxjs.service';
+import { SseClient } from './sse.client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogClientService {
 
-  private readonly LOG_BACKEND_SERVICE_URL = 'http://localhost:8090/';
+  private readonly LOG_STREAM_BASE_URL = 'http://localhost:8090/';
 
-  constructor(private readonly sseRxjsService: ServerSentEventsRxjsService) {
+  constructor(private readonly sseClient: SseClient) {
   }
 
-  streamLogs(searchText: string): Observable<LogEntry[]> {
-    const url = this.addSearchParams(this.LOG_BACKEND_SERVICE_URL, searchText);
-    return this.sseRxjsService.getServerSentEvents<LogEntry>(url).pipe(
+  getLogStream(searchText: string): Observable<LogEntry[]> {
+    const url = this.addSearchParams(this.LOG_STREAM_BASE_URL, searchText);
+
+    return this.sseClient.get<LogEntry>(url).pipe(
         scan((acc, curr) => [curr, ...acc], [] as LogEntry[])
     );
   }

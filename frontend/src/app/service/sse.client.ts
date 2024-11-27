@@ -4,12 +4,12 @@ import { Observable, Subscriber } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ServerSentEventsRxjsService {
+export class SseClient {
 
   constructor(private zone: NgZone) {
   }
 
-  getServerSentEvents<T>(url: string): Observable<T> {
+  get<T>(url: string): Observable<T> {
     return new Observable((observer: Subscriber<T>) => {
       const eventSource = new EventSource(url);
 

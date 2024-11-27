@@ -35,7 +35,7 @@ export class LogFeedComponent implements OnInit {
       startWith(''),
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(search => this.logService.streamLogs(search)),
+      switchMap(search => this.logService.getLogStream(search)),
     )
   }
 
