@@ -14,6 +14,13 @@ The application should be able to handle logs from multiple sources and display 
 
 Additionally, the application should be able to filter the logs based on an input string and display only the logs that contain the input string.
 
+## Structure
+
+The project is divided into 3 parts:
+- Frontend containing the SPA Angular Application `frontend`
+- Backend containing the Spring Webflux Server `backend`
+- Sample Code used in the presentation `rxjs-samples`
+
 
 ## Getting Started
 
@@ -42,6 +49,8 @@ cd backend
 
 #### Frontend
 
+Navigate 
+
 ```bash
 cd frontend
 (npm|yarn|pnpm) start
@@ -49,14 +58,20 @@ cd frontend
 
 #### Backend
 
+First navigate into the backend directory
+
 ```bash
 cd backend
-./mvnw spring-boot:run
 ```
 
-## Structure
+Then start the docker container for the Kafka broker
 
-The project is divided into 3 parts:
-- Frontend `frontend`
-- Backend `backend`
-- Sample Code used in the presentation `rxjs-samples`
+```bash
+docker-compose up -d
+```
+
+Then start the Spring Boot application
+
+```bash
+./mvnw spring-boot:run
+```

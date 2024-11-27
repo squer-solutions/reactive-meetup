@@ -12,9 +12,16 @@ import java.time.OffsetDateTime;
 @Component
 public class InMemoryLogProvider implements LogProvider {
 
+    private final Flux<LogEntry> logs;
+
+    public InMemoryLogProvider() {
+        this.logs = Flux.interval(Duration.ofSeconds(1))
+            .map(i -> new LogEntry(LogLevel.DEBUG, OffsetDateTime.now(), "Debug from in-memory log provider: " + i))
+            .share();
+    }
+
     @Override
     public Flux<LogEntry> getLogs() {
-        return Flux.interval(Duration.ofSeconds(1))
-            .map(i -> new LogEntry(LogLevel.DEBUG, OffsetDateTime.now(), "Debug from in-memory log provider: " + i));
+        return logs;
     }
 }
