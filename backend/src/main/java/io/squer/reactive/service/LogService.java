@@ -10,12 +10,8 @@ import reactor.core.publisher.Flux;
 @RequiredArgsConstructor
 public class LogService {
 
-    private final List<LogProvider> logProviders;
-
     public Flux<LogEntry> getLogs(String filterText) {
-        return getLogs().filter(logEntry ->
-                !StringUtils.hasLength(filterText) || logEntry.message().toLowerCase().contains(filterText.toLowerCase())
-            );
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     public Flux<LogEntry> getLogs() {
