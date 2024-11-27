@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {debounceTime, distinctUntilChanged, map, Observable, of, switchMap} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
+import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map, Observable, of, switchMap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'reactive-api-call',
