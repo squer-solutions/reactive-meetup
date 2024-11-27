@@ -3,6 +3,7 @@ package io.squer.reactive.service;
 import io.squer.reactive.model.LogEntry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import reactor.core.publisher.Flux;
 
 import java.util.List;
@@ -14,11 +15,10 @@ public class LogService {
     private final List<LogProvider> logProviders;
 
     public Flux<LogEntry> getLogs(String filterText) {
-        return Flux.merge(
-            logProviders.stream()
-                .map(LogProvider::getLogs)
-                .toList()
-        ).filter(logEntry -> filterText == null || logEntry.message().toLowerCase().contains(filterText.toLowerCase()));
+        return getLogs().filter(logEntry ->
+                StringUtils.hasLength(filterText) ||
+                logEntry.message().toLowerCase().contains(filterText.toLowerCase())
+            );
     }
 
     public Flux<LogEntry> getLogs() {
