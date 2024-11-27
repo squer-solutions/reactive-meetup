@@ -16,8 +16,7 @@ public class LogService {
 
     public Flux<LogEntry> getLogs(String filterText) {
         return getLogs().filter(logEntry ->
-                StringUtils.hasLength(filterText) ||
-                logEntry.message().toLowerCase().contains(filterText.toLowerCase())
+                !StringUtils.hasLength(filterText) || logEntry.message().toLowerCase().contains(filterText.toLowerCase())
             );
     }
 
