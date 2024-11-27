@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
 
 @Injectable({
@@ -13,7 +13,8 @@ export class LogClientService {
   }
 
   getLogStream(searchText: string): Observable<LogEntry[]> {
-    throw new Error('Not implemented');
+    console.log(`called getLogStream with ${searchText}`);
+    return of([]);
   }
 
   private addSearchParams(url: string, searchText: string): string {
