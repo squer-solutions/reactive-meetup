@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, scan } from 'rxjs';
+import { Observable, scan, startWith } from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
 import { SseClient } from './sse.client';
 
@@ -17,7 +17,8 @@ export class LogClientService {
     const url = this.addSearchParams(this.LOG_STREAM_BASE_URL, searchText);
 
     return this.sseClient.get<LogEntry>(url).pipe(
-        scan((acc, curr) => [curr, ...acc], [] as LogEntry[])
+        scan((acc, curr) => [curr, ...acc], [] as LogEntry[]),
+        startWith([] as LogEntry[]),
     );
   }
 

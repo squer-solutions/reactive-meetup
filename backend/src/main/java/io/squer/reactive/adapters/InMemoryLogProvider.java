@@ -9,6 +9,9 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 import java.time.OffsetDateTime;
 
+import static io.squer.reactive.util.LogStatementProvider.getRandomLogStatement;
+import static java.lang.String.format;
+
 @Component
 public class InMemoryLogProvider implements LogProvider {
 
@@ -16,8 +19,11 @@ public class InMemoryLogProvider implements LogProvider {
 
     public InMemoryLogProvider() {
         this.logs = Flux.interval(Duration.ofSeconds(1))
-            .map(i -> new LogEntry(LogLevel.DEBUG, OffsetDateTime.now(), "Debug from in-memory log provider: " + i))
-            .share();
+            .map(i -> new LogEntry(
+                LogLevel.randomLogLevel(),
+                OffsetDateTime.now(),
+                format("In Memory: %s", getRandomLogStatement())
+            )).share();
     }
 
     @Override

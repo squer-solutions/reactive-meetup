@@ -16,6 +16,7 @@ public class KafkaLogProvider implements LogProvider {
 
     public KafkaLogProvider(KafkaReceiver<String, LogEntry> kafkaReceiver) {
         logs = kafkaReceiver.receiveAutoAck()
+            .onBackpressureDrop()
             .flatMap(Function.identity())
             .map(ConsumerRecord::value)
             .share();
