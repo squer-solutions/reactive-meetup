@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import {debounceTime, distinctUntilChanged, Observable, startWith, switchMap} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, Observable, startWith, switchMap} from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
 import { LogClientService } from '../service/log-client.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,10 +27,17 @@ export class LogFeedComponent implements OnInit {
   logs$!: Observable<LogEntry[]>;
   searchFormControl = new FormControl<string>('', {nonNullable: true});
 
-  constructor(private readonly logService: LogClientService) {
-  }
+  constructor(private readonly logService: LogClientService) { }
 
   ngOnInit() {
+
+    this.logs$ = this.searchFormControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(500),
+      distinctUntilChanged(),
+      map(val => val.trim()),
+      switchMap(val => this.logService.getLogStream(val)),
+    )
   }
 
 }
