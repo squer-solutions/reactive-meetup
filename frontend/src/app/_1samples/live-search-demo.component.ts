@@ -12,20 +12,24 @@ import {
   switchMap,
   take
 } from 'rxjs';
+import {NgStyle} from '@angular/common';
 
 @Component({
   selector: 'reactive-api-call',
   standalone: true,
   imports: [
     ReactiveFormsModule,
+    NgStyle,
   ],
   template: `
-    <form>
-      <input [formControl]="searchFormControl" type="text"/>
-    </form>
-    @for (logEntry of logs; track logEntry) {
-      <p>{{ logEntry }}</p>
-    }
+    <div [ngStyle]="{padding: '2rem'}">
+      <form>
+        <input [formControl]="searchFormControl" type="text"/>
+      </form>
+      @for (logEntry of logs; track logEntry) {
+        <p>{{ logEntry }}</p>
+      }
+    </div>
   `
 })
 export class LiveSearchDemoComponent implements OnInit{
