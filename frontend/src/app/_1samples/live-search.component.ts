@@ -38,8 +38,7 @@ export class LiveSearchComponent {
 
   constructor() {
     this.logs$ = this.searchFormControl.valueChanges.pipe(
-      startWith(""),
-      map(value => value.trim()),
+      startWith(''),
       debounceTime(500),
       distinctUntilChanged(),
       switchMap((val) => this.searchForLogs(val))
