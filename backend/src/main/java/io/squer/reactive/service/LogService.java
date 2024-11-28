@@ -17,8 +17,4 @@ public class LogService {
         throw new UnsupportedOperationException("Not implemented");
     }
 
-    public Flux<LogEntry> getLogs() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
 }
