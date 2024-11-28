@@ -35,7 +35,6 @@ export class LogFeedComponent implements OnInit {
       startWith(''),
       debounceTime(500),
       distinctUntilChanged(),
-      map(val => val.trim()),
       switchMap(val => this.logService.getLogStream(val)),
     )
   }
