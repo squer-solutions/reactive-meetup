@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import {debounceTime, distinctUntilChanged, Observable, startWith, switchMap} from 'rxjs';
 import { LogEntry } from '../model/log-entry.model';
 import { LogClientService } from '../service/log-client.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,11 +25,12 @@ import { MatInput } from '@angular/material/input';
 export class LogFeedComponent implements OnInit {
 
   logs$!: Observable<LogEntry[]>;
-  formControl: FormControl<string> = new FormControl('', {nonNullable: true});
+  searchFormControl = new FormControl<string>('', {nonNullable: true});
 
   constructor(private readonly logService: LogClientService) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

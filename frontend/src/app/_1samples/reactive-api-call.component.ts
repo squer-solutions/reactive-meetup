@@ -17,7 +17,7 @@ import { AsyncPipe } from '@angular/common';
     </form>
   `
 })
-export class ReactiveApiCall {
+export class ReactiveApiCallComponent {
 
   public formControl = new FormControl<string>('', {nonNullable: true});
 
