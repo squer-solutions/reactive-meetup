@@ -17,7 +17,7 @@ import { AsyncPipe } from '@angular/common';
     </form>
   `
 })
-export class ReactiveUpdate {
+export class ReactiveUpdateComponent {
 
   public formControl = new FormControl<string>('', {nonNullable: true});
 
