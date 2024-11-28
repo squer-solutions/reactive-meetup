@@ -3,7 +3,7 @@ type Color = 'yellow'|'blue'|'red'|'green'|'purple'|'cyan';
 export class PrettyLogger {
     log(message: any, color?: Color) {
         const colorCode = this.getColor(color);
-        console.log(`${colorCode}${message}`);
+        console.log(`  ${colorCode}${message}`);
     }
 
     private getColor(color?: Color): string {
