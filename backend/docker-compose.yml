@@ -1,14 +1,16 @@
 version: '3.8'
 services:
   zookeeper:
-    image: bitnami/zookeeper:latest
+    container_name: 'rxjs_reactive_meetup_zookeeper'
+    image: bitnami/zookeeper:3.9.3
     environment:
       ALLOW_ANONYMOUS_LOGIN: 'yes'
     ports:
       - "2181:2181"
 
   kafka:
-    image: bitnami/kafka:latest
+    container_name: 'rxjs_reactive_meetup_kafka'
+    image: bitnami/kafka:3.9.0
     depends_on:
       - zookeeper
     ports:
