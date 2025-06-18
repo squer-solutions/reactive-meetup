@@ -1,0 +1,27 @@
+<div class="form-row">
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <input [formControl]="searchControl" matInput type="text">
+  </mat-form-field>
+</div>
+<div class="table-wrapper">
+  <table class="log-table">
+    <thead>
+    <tr>
+      <th>Log Level</th>
+      <th>Timestamp</th>
+      <th>Message</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (logEntry of logs; track logEntry.timestamp) {
+        <tr>
+          <td>{{ logEntry.level }}</td>
+          <td>{{ logEntry.timestamp | date:'dd.MM.yyyy hh:mm:ss:SSS' }}</td>
+          <td>{{ logEntry.message }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
